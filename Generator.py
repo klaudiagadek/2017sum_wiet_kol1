@@ -1,8 +1,18 @@
 from FlightSimulator import FlightSimulator
-from Generator import Generator
-from time import sleep
 import sys
 from select import select
+from time import sleep
+
+
+class Generator(object):
+    def __init__(self, flight_simulator):
+        self.my_object = flight_simulator
+
+    def __next__(self):
+        return self.next()
+
+    def next(self):
+        yield self.my_object.draw_angle()
 
 
 if __name__ == "__main__":
